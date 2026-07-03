@@ -57,15 +57,9 @@ await initProtectedPage("reservations", async ({ root, auth }) => {
     return `${year}-${month}-${day}`;
   }
 
-  function currentTimeValue() {
-    const now = new Date();
-    return `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
-  }
-
   function validateStayDateTime() {
     const checkIn = qs("#check_in").value;
     const checkOut = qs("#check_out").value;
-    const checkInTime = qs("#check_in_time")?.value || "00:00";
     const today = todayIso();
 
     if (checkIn && checkIn < today) {
@@ -73,9 +67,6 @@ await initProtectedPage("reservations", async ({ root, auth }) => {
     }
     if (checkOut && checkOut <= checkIn) {
       throw new Error("Check-out date must be after the check-in date.");
-    }
-    if (checkIn === today && checkInTime && checkInTime < currentTimeValue()) {
-      throw new Error("Check-in time cannot be earlier than the current time.");
     }
   }
 
@@ -752,11 +743,7 @@ await initProtectedPage("reservations", async ({ root, auth }) => {
       }
 
       if (checkInTime) {
-        if (checkIn === todayIso()) {
-          checkInTime.min = currentTimeValue();
-        } else {
-          checkInTime.removeAttribute("min");
-        }
+        checkInTime.removeAttribute("min");
       }
     }
 
