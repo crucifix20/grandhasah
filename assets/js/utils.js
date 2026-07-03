@@ -184,6 +184,10 @@ export function friendlyError(error, fallback = "Something went wrong. Please tr
 }
 
 export async function withFormBusy(form, pendingLabel, callback) {
+  if (!form) {
+    throw new Error("Form is no longer available. Please try again.");
+  }
+
   if (form.dataset.submitting === "true") {
     return;
   }

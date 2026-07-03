@@ -205,7 +205,8 @@ await initProtectedPage("settings", async ({ root, auth }) => {
 
     qs("#table-cleanup-form").addEventListener("submit", async (event) => {
       event.preventDefault();
-      const payload = serializeForm(event.currentTarget);
+      const form = event.currentTarget;
+      const payload = serializeForm(form);
       const cleanupTable = getCleanupTable(payload.tableKey);
 
       if (!cleanupTable) {
@@ -228,7 +229,7 @@ await initProtectedPage("settings", async ({ root, auth }) => {
       }
 
       try {
-        await withFormBusy(event.currentTarget, "Deleting...", async () => {
+        await withFormBusy(form, "Deleting...", async () => {
           const result = await deleteCleanupTableRows(payload.tableKey);
           if (result.table !== "audit_logs") {
             const detailText = result.details
