@@ -47,7 +47,7 @@ await initProtectedPage("clubs", async ({ root, auth }) => {
     render(root, `
       ${createPageHeader({
         title: "VIP Clubs",
-        subtitle: "Premium membership programmes, benefits, and revenue streams for Grand Hasah Hotel guests.",
+        subtitle: "Premium membership programmes, benefits, and revenue streams for Grand Millado Hotel guests.",
         actions: `
           <button class="btn btn-secondary" id="register-club-member-button" type="button">Register Guest</button>
           ${isAdmin ? `<button class="btn btn-primary" id="add-club-button" type="button">Add Club</button>` : ""}

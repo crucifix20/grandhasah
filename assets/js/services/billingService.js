@@ -50,7 +50,7 @@ export async function createInvoiceFromReservation(reservation, options = {}) {
     .insert({
       reservation_id: reservation.id,
       guest_id: reservation.guest_id,
-      invoice_number: `GHH-INV-${new Date().getFullYear()}-${String(reservation.id).padStart(6, "0")}`,
+      invoice_number: `GMH-INV-${new Date().getFullYear()}-${String(reservation.id).padStart(6, "0")}`,
       subtotal,
       tax,
       discount,

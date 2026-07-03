@@ -18,7 +18,7 @@ function renderGuestProfileFolio({ guest, memberships, stays, amenities, service
       <article class="print-card">
         <header class="print-header">
           <div>
-            <p class="eyebrow">Grand Hasah Hotel</p>
+            <p class="eyebrow">Grand Millado Hotel</p>
             <h1>Guest Profile</h1>
             <p class="muted">Professional guest information, booking history, and service activity.</p>
           </div>

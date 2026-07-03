@@ -62,7 +62,7 @@ export async function generateMembershipNumber() {
   }
 
   const next = String((count || 0) + 1).padStart(6, "0");
-  return `GHH-CLUB-${new Date().getFullYear()}-${next}`;
+  return `GMH-CLUB-${new Date().getFullYear()}-${next}`;
 }
 
 export async function saveClubRegistration(payload) {

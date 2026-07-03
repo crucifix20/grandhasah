@@ -156,7 +156,7 @@ await initProtectedPage("dashboard", async ({ root, auth }) => {
         <div class="stitch-arrivals-card">
           ${arrivals.map((reservation) => `
             <article class="stitch-arrival-item">
-              <div class="stitch-arrival-avatar">${initials(reservation.guests?.full_name || "GHH")}</div>
+              <div class="stitch-arrival-avatar">${initials(reservation.guests?.full_name || "GMH")}</div>
               <div class="stitch-arrival-copy">
                 <strong>${reservation.guests?.full_name || "Guest"}</strong>
                 <small>${reservation.rooms?.room_types?.name || "Room"} - ${reservation.confirmation_number || `Reservation #${reservation.id}`}</small>

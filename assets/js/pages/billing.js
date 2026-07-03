@@ -19,7 +19,7 @@ await initProtectedPage("billing", async ({ root, auth }) => {
     render(root, `
       ${createPageHeader({
         title: "Accounting Ledger",
-        subtitle: "Invoices, collections, club revenue, and payment capture for Grand Hasah Hotel.",
+        subtitle: "Invoices, collections, club revenue, and payment capture for Grand Millado Hotel.",
         actions: `
           <button class="btn btn-secondary" id="create-invoice-button" type="button">Create Invoice</button>
           <button class="btn btn-primary" id="record-payment-button" type="button">Record Payment</button>

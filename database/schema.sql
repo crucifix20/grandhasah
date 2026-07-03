@@ -453,7 +453,7 @@ as $$
 begin
   if new.confirmation_number is null or length(trim(new.confirmation_number)) = 0 then
     update public.reservations
-      set confirmation_number = 'GHH-BOOK-' || to_char(new.created_at, 'YYYY') || '-' || lpad(new.id::text, 6, '0')
+      set confirmation_number = 'GMH-BOOK-' || to_char(new.created_at, 'YYYY') || '-' || lpad(new.id::text, 6, '0')
     where id = new.id;
   end if;
 

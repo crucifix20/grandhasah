@@ -1,10 +1,10 @@
-export const APP_NAME = "Grand Hasah Hotel";
+export const APP_NAME = "Grand Millado Hotel";
 export const APP_TAGLINE = "Executive hotel operations platform";
 export const HOTEL_ADDRESS = "Prk. Waling-waling Arellano St., Brgy. Zone II, Koronadal City, South Cotabato, Philippines";
-export const HOTEL_CONTACT = "+63 (2) 8123 4567 | concierge@grandhasahhotel.com";
+export const HOTEL_CONTACT = "+63 (2) 8123 4567 | concierge@grandmilladohotel.com";
 
-export const SUPABASE_URL = "https://dpjftfqntumbpdiyhgbd.supabase.co";
-export const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwamZ0ZnFudHVtYnBkaXloZ2JkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMwNDIzMTksImV4cCI6MjA5ODYxODMxOX0.P3YXN1eVKwqHRlqKdxaz4v10UwfDISvlCCyR6UuOSV8";
+export const SUPABASE_URL = "https://sqlcqgubkgtinqsjxnqq.supabase.co";
+export const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxbGNxZ3Via2d0aW5xc2p4bnFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1NzMyODgsImV4cCI6MjA5NDE0OTI4OH0.e2BoKZqHzbhMm_d7Y7u1WxMIP7Q6aAtCCpE7U8MFUzY";
 
 export const ROLES = {
   ADMIN: "Admin",
