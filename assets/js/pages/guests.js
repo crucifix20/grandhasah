@@ -224,7 +224,7 @@ await initProtectedPage("guests", async ({ root, auth }) => {
     }));
 
     root.querySelectorAll(".guest-delete-button").forEach((button) => button.addEventListener("click", async () => {
-      if (!await confirmDialog({ title: "Delete guest", message: "This removes the guest profile from the system.", confirmLabel: "Delete", tone: "danger" })) {
+      if (!await confirmDialog({ title: "Delete guest", message: "This removes the guest profile plus linked reservation and billing records.", confirmLabel: "Delete", tone: "danger" })) {
         return;
       }
       try {
@@ -234,7 +234,7 @@ await initProtectedPage("guests", async ({ root, auth }) => {
           action: "Deleted guest",
           entityType: "guests",
           entityId: Number(button.dataset.id),
-          details: "Guest profile removed",
+          details: "Guest profile and linked reservation records removed",
         });
         showToast("Guest deleted.", "success");
         await load();

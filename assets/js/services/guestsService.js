@@ -144,6 +144,26 @@ export async function findPotentialDuplicateGuests({ email = "", phone = "", exc
 }
 
 export async function deleteGuest(id) {
+  const guestId = Number(id);
+
+  const { error: invoiceError } = await supabase
+    .from("invoices")
+    .delete()
+    .eq("guest_id", guestId);
+
+  if (invoiceError) {
+    throw invoiceError;
+  }
+
+  const { error: reservationError } = await supabase
+    .from("reservations")
+    .delete()
+    .eq("guest_id", guestId);
+
+  if (reservationError) {
+    throw reservationError;
+  }
+
   const { error } = await supabase.from("guests").delete().eq("id", id);
   if (error) {
     throw error;
