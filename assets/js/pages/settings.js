@@ -1,9 +1,10 @@
 import { initProtectedPage } from "../router.js";
 import { createAuditLog } from "../services/auditService.js";
 import { deleteRoomType, listRoomTypes, saveRoomType } from "../services/roomsService.js";
+import { CLEANUP_TABLES, deleteCleanupTableRows, getCleanupTable } from "../services/settingsCleanupService.js";
 import { deleteAllStaffTransactions } from "../services/staffService.js";
 import { closeModal, confirmDialog, createPageHeader, openModal, showToast } from "../ui.js";
-import { friendlyError, formatCurrency, getStoredSettings, qs, render, saveStoredSettings, serializeForm, withFormBusy } from "../utils.js";
+import { escapeHtml, friendlyError, formatCurrency, getStoredSettings, qs, render, saveStoredSettings, serializeForm, withFormBusy } from "../utils.js";
 
 await initProtectedPage("settings", async ({ root, auth }) => {
   async function load() {
@@ -92,6 +93,30 @@ await initProtectedPage("settings", async ({ root, auth }) => {
       <section class="stitch-overview-card" style="margin-top:24px;">
         <div class="stitch-overview-head">
           <div>
+            <h2>Table Cleanup</h2>
+            <p>Delete all records from a selected operational table.</p>
+          </div>
+        </div>
+        <form id="table-cleanup-form" class="form-stack" style="margin-top:18px;">
+          <div class="filter-row">
+            <div class="field">
+              <label for="cleanup-table">Table</label>
+              <select id="cleanup-table" name="tableKey" required>
+                ${CLEANUP_TABLES.map((table) => `<option value="${table.key}">${escapeHtml(table.label)}</option>`).join("")}
+              </select>
+            </div>
+            <div class="field">
+              <label for="cleanup-confirmation">Confirmation</label>
+              <input id="cleanup-confirmation" name="confirmation" placeholder="Type DELETE" autocomplete="off" required>
+            </div>
+          </div>
+          <p class="muted" id="cleanup-table-note">${escapeHtml(CLEANUP_TABLES[0]?.note || "")}</p>
+          <button class="btn btn-danger" type="submit">Delete Selected Table Records</button>
+        </form>
+      </section>
+      <section class="stitch-overview-card" style="margin-top:24px;">
+        <div class="stitch-overview-head">
+          <div>
             <h2>Room Type Register</h2>
             <p>${roomTypes.length} room types configured.</p>
           </div>
@@ -170,6 +195,55 @@ await initProtectedPage("settings", async ({ root, auth }) => {
         showToast("Staff transactions deleted.", "success");
       } catch (error) {
         showToast(friendlyError(error), "error");
+      }
+    });
+
+    qs("#cleanup-table").addEventListener("change", (event) => {
+      const cleanupTable = getCleanupTable(event.currentTarget.value);
+      qs("#cleanup-table-note").textContent = cleanupTable?.note || "";
+    });
+
+    qs("#table-cleanup-form").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const payload = serializeForm(event.currentTarget);
+      const cleanupTable = getCleanupTable(payload.tableKey);
+
+      if (!cleanupTable) {
+        showToast("Select a valid table to clean up.", "error");
+        return;
+      }
+
+      if (payload.confirmation.trim().toUpperCase() !== "DELETE") {
+        showToast("Type DELETE to confirm table cleanup.", "error");
+        return;
+      }
+
+      if (!await confirmDialog({
+        title: `Delete ${cleanupTable.label}`,
+        message: `This removes all records from ${cleanupTable.label}. Related records may also be removed by database cascade rules, or deletion may be blocked by existing linked records.`,
+        confirmLabel: "Delete Records",
+        tone: "danger",
+      })) {
+        return;
+      }
+
+      try {
+        await withFormBusy(event.currentTarget, "Deleting...", async () => {
+          const result = await deleteCleanupTableRows(payload.tableKey);
+          if (result.table !== "audit_logs") {
+            await createAuditLog({
+              userId: auth.user.id,
+              action: "Deleted table records",
+              entityType: result.table,
+              details: `Removed ${result.deleted} ${result.label} records from ${result.table}`,
+            });
+          }
+          event.currentTarget.reset();
+          qs("#cleanup-table-note").textContent = CLEANUP_TABLES[0]?.note || "";
+          showToast(`${result.deleted} ${result.label} records deleted.`, "success");
+        });
+      } catch (error) {
+        showToast(friendlyError(error, "Unable to delete selected table records. Check linked records first."), "error");
       }
     });
 

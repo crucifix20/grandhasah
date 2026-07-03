@@ -1,3 +1,27 @@
+create extension if not exists pgcrypto;
+
+create table if not exists public.users_profile (
+  id uuid primary key references auth.users (id) on delete cascade,
+  full_name text not null,
+  role text not null check (role in ('Admin', 'Staff')),
+  avatar_url text,
+  created_at timestamptz not null default now()
+);
+
+create table if not exists public.staff (
+  id bigserial primary key,
+  full_name text not null,
+  email text unique,
+  auth_user_id uuid unique references public.users_profile (id) on delete set null,
+  phone text,
+  department text,
+  position text,
+  shift text,
+  login_password text,
+  status text not null default 'Active',
+  created_at timestamptz not null default now()
+);
+
 alter table public.staff add column if not exists login_password text;
 
 delete from public.staff
