@@ -191,7 +191,7 @@ await initProtectedPage("reservations", async ({ root, auth }) => {
             </div>
             <div class="field">
               <label for="reservation-search">Search</label>
-              <input id="reservation-search" type="search" placeholder="Sophie, 301, GMH-BOOK, Partial, Paid">
+              <input id="reservation-search" type="search" placeholder="Sophie, 301, GHH-BOOK, Partial, Paid">
             </div>
           </div>
         </div>

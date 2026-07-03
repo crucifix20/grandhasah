@@ -1,5 +1,5 @@
 import { canAccessPage, getVisibleNav, requireAuth, signOut } from "./auth.js";
-import { PAGE_META } from "./config.js";
+import { APP_NAME, PAGE_META } from "./config.js";
 import { createEmptyState, createPageLoadingState, renderAppShell, showToast } from "./ui.js";
 
 export async function initProtectedPage(pageKey, initPage) {
@@ -33,7 +33,7 @@ export async function initProtectedPage(pageKey, initPage) {
       }
     });
 
-    document.title = `Grand Millado Hotel | ${PAGE_META[pageKey]?.title || "Operations"}`;
+    document.title = `${APP_NAME} | ${PAGE_META[pageKey]?.title || "Operations"}`;
     const pageRoot = document.getElementById("page-content");
     pageRoot.innerHTML = createPageLoadingState(PAGE_META[pageKey]?.title || "Loading");
 

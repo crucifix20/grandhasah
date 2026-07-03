@@ -16,7 +16,7 @@ if (!await redirectAuthenticatedUser()) {
   render(root, `
     <main class="auth-shell">
       <header class="auth-topbar">
-        <div style="font-family:'Noto Serif',serif; letter-spacing:0.18em; font-size:1.55rem;">Grand Millado Hotel</div>
+        <div style="font-family:'Noto Serif',serif; letter-spacing:0.18em; font-size:1.55rem;">Grand Hasah Hotel</div>
         <div style="display:flex; gap:18px;">
           <span class="material-symbols-outlined">help</span>
           <span class="material-symbols-outlined">language</span>
@@ -25,15 +25,15 @@ if (!await redirectAuthenticatedUser()) {
       <div class="auth-shell-content">
         <section class="auth-card">
           <div class="auth-header">
-            <div class="brand-mark">GMH</div>
+            <div class="brand-mark">GHH</div>
             <p class="eyebrow">Secure Access</p>
-            <h1>Grand Millado Hotel</h1>
+            <h1>Grand Hasah Hotel</h1>
             <p class="auth-subtitle">Sign in to manage reservations, guests, revenue, operations, and premium membership services.</p>
           </div>
           <form id="login-form" class="form-stack">
             <div class="field">
               <label for="email">Email Address</label>
-              <input id="email" name="email" type="email" placeholder="name@grandmilladohotel.com" required>
+              <input id="email" name="email" type="email" placeholder="name@grandhasahhotel.com" required>
             </div>
             <div class="field">
               <label for="password">Password</label>
@@ -43,14 +43,14 @@ if (!await redirectAuthenticatedUser()) {
             <p id="login-error" class="validation-error hidden"></p>
           </form>
           <div style="margin-top:22px;" class="muted">
-            Access is limited to authorized Grand Millado Hotel personnel with active Supabase accounts.
+            Access is limited to authorized Grand Hasah Hotel personnel with active Supabase accounts.
           </div>
         </section>
       </div>
       <footer class="auth-footer">
         <div>Privacy Policy</div>
         <div>Authorized Personnel Only</div>
-        <div>Grand Millado Hotel Operations</div>
+        <div>Grand Hasah Hotel Operations</div>
       </footer>
     </main>
   `);

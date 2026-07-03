@@ -11,7 +11,7 @@ function buildFallbackProfile(user, profile = {}) {
   const metadata = user?.user_metadata || {};
   return {
     id: user?.id || profile.id || null,
-    full_name: profile.full_name || metadata.full_name || user?.email?.split("@")[0] || "Grand Millado Hotel User",
+    full_name: profile.full_name || metadata.full_name || user?.email?.split("@")[0] || "Grand Hasah Hotel User",
     role: normalizeRole(profile.role || metadata.role),
     avatar_url: profile.avatar_url || metadata.avatar_url || null,
     created_at: profile.created_at || null,
@@ -47,7 +47,7 @@ async function ensureProfile(user) {
   const metadata = user.user_metadata || {};
   const payload = {
     id: user.id,
-    full_name: metadata.full_name || user.email?.split("@")[0] || "Grand Millado Hotel User",
+    full_name: metadata.full_name || user.email?.split("@")[0] || "Grand Hasah Hotel User",
     role: normalizeRole(metadata.role),
     avatar_url: metadata.avatar_url || null,
   };

@@ -3,7 +3,7 @@ import { getCheckoutFolio } from "./billingService.js";
 import { getReservation } from "./reservationsService.js";
 
 function buildReceiptNumber(reservation) {
-  return `GMH-RCT-${new Date(reservation.checked_out_at || reservation.created_at || Date.now()).getFullYear()}-${String(reservation.id).padStart(6, "0")}`;
+  return `GHH-RCT-${new Date(reservation.checked_out_at || reservation.created_at || Date.now()).getFullYear()}-${String(reservation.id).padStart(6, "0")}`;
 }
 
 export async function getCheckoutReceiptData(id) {
@@ -49,7 +49,7 @@ export function renderCheckoutReceiptPage({ settings, reservation, folio, receip
       <article class="print-card">
         <header class="print-header">
           <div>
-            <p class="eyebrow">Grand Millado Hotel</p>
+            <p class="eyebrow">Grand Hasah Hotel</p>
             <h1>Checkout Receipt</h1>
             <p class="muted">${escapeHtml(settings.address)}</p>
             <p class="muted">${escapeHtml(settings.contact)}</p>
@@ -137,10 +137,10 @@ export function renderCheckoutReceiptPage({ settings, reservation, folio, receip
         ` : ""}
         <section class="print-section">
           <h2>Thank You</h2>
-          <p class="muted">Thank you for staying with Grand Millado Hotel. Please retain this receipt for your records. Refundable deposits, if any, are reflected above and processed according to the recorded settlement.</p>
+          <p class="muted">Thank you for staying with Grand Hasah Hotel. Please retain this receipt for your records. Refundable deposits, if any, are reflected above and processed according to the recorded settlement.</p>
           <div class="signature-line">
             <strong>${escapeHtml(staffName)}</strong><br>
-            Grand Millado Hotel Front Office<br>
+            Grand Hasah Hotel Front Office<br>
             Signature over Printed Name
           </div>
         </section>

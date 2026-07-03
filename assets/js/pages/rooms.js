@@ -40,7 +40,7 @@ await initProtectedPage("rooms", async ({ root, auth }) => {
     render(root, `
       ${createPageHeader({
         title: "Room Management",
-        subtitle: "Inventory control, rates, and room readiness across Grand Millado Hotel.",
+        subtitle: "Inventory control, rates, and room readiness across Grand Hasah Hotel.",
         actions: canManageRooms ? `
           <button class="btn btn-secondary" id="room-refresh-button" type="button">Refresh</button>
           <button class="btn btn-primary" id="add-room-button" type="button">Add Room</button>

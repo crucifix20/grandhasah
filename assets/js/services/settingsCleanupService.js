@@ -1,9 +1,10 @@
 import { supabase } from "../supabaseClient.js";
+import { deleteAllStaffWithRelatedData } from "./staffService.js";
 
 export const CLEANUP_TABLES = [
   { key: "payments", label: "Payment Transactions", table: "payments", note: "Payment ledger rows." },
   { key: "club_transactions", label: "Club Transactions", table: "club_transactions", note: "VIP club transaction rows." },
-  { key: "staff", label: "Staff", table: "staff", note: "Staff directory records. Login profiles are not removed." },
+  { key: "staff", label: "Staff", table: "staff", note: "Staff directory records plus assigned tasks, payments, service orders, and audit logs. Login profiles are not removed." },
   { key: "rooms", label: "Rooms", table: "rooms", note: "Room inventory records. Existing reservations can block deletion." },
   { key: "room_types", label: "Room Types", table: "room_types", note: "Room type records. Existing rooms can block deletion." },
   { key: "reservations", label: "Reservations", table: "reservations", note: "Reservation records and dependent invoice/service rows where cascades allow." },
@@ -30,6 +31,16 @@ export async function deleteCleanupTableRows(key) {
   const cleanupTable = getCleanupTable(key);
   if (!cleanupTable) {
     throw new Error("Select a valid table to clean up.");
+  }
+
+  if (cleanupTable.key === "staff") {
+    const deleted = await deleteAllStaffWithRelatedData();
+    return {
+      label: cleanupTable.label,
+      table: cleanupTable.table,
+      deleted: deleted.staff,
+      details: deleted,
+    };
   }
 
   const { data, error } = await supabase

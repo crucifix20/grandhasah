@@ -372,7 +372,7 @@ export function openModal({ title, body, actions = "" }) {
         <header>
           <div class="panel-header">
             <div>
-              <p class="eyebrow">Grand Millado Hotel</p>
+              <p class="eyebrow">Grand Hasah Hotel</p>
               <h2 id="modal-title" style="margin:6px 0 0;">${escapeHtml(title)}</h2>
             </div>
             <button class="btn btn-ghost" type="button" data-close-modal>Close</button>
@@ -508,14 +508,14 @@ export function renderBookingConfirmation({ reservation, invoice, payments, amen
       <article class="print-card">
         <header class="print-header">
           <div>
-            <p class="eyebrow">Grand Millado Hotel</p>
+            <p class="eyebrow">Grand Hasah Hotel</p>
             <h1>Booking Confirmation</h1>
             <p class="muted">${escapeHtml(settings.address)}</p>
             <p class="muted">${escapeHtml(settings.contact)}</p>
           </div>
           <div class="text-right">
             <p class="eyebrow">Confirmation Number</p>
-            <h2 class="font-display mono">${escapeHtml(reservation.confirmation_number || `GMH-BOOK-${reservation.id}`)}</h2>
+            <h2 class="font-display mono">${escapeHtml(reservation.confirmation_number || `GHH-BOOK-${reservation.id}`)}</h2>
             <p class="muted">Booking Date: ${escapeHtml(formatDate(reservation.created_at))}</p>
           </div>
         </header>
@@ -599,7 +599,7 @@ export function renderBookingConfirmation({ reservation, invoice, payments, amen
             <li>Check-in time is 2:00 PM and check-out time is 12:00 PM.</li>
             <li>The hotel is not liable for lost, misplaced, or unattended guest items.</li>
             <li>Room damages, missing items, or property losses caused during the stay will be charged to the guest.</li>
-            <li>All room, amenity, and VIP club charges are subject to Grand Millado Hotel policies and applicable taxes.</li>
+            <li>All room, amenity, and VIP club charges are subject to Grand Hasah Hotel policies and applicable taxes.</li>
             <li>Cancellations, amendments, and refund processing follow the confirmed booking policy shared at the time of reservation.</li>
           </ol>
           <div class="signature-grid booking-signatures">

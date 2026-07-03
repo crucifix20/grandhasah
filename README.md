@@ -1,6 +1,6 @@
-# Grand Millado Hotel Management System
+# Grand Hasah Hotel Management System
 
-Grand Millado Hotel Management System is a browser-based hotel operations platform built from the provided luxury Stitch design package and implemented with vanilla HTML, CSS, JavaScript, and Supabase. It covers reservations, rooms, guests, housekeeping, staff administration, billing, amenities, VIP clubs, reports, settings, booking confirmations, and checkout receipts.
+Grand Hasah Hotel Management System is a browser-based hotel operations platform built from the provided luxury Stitch design package and implemented with vanilla HTML, CSS, JavaScript, and Supabase. It covers reservations, rooms, guests, housekeeping, staff administration, billing, amenities, VIP clubs, reports, settings, booking confirmations, and checkout receipts.
 
 ## Tech Stack
 
@@ -135,7 +135,7 @@ Staff users cannot access:
 
 ### System Scope
 
-The application is a premium hotel front-end operations suite for Grand Millado Hotel. Supabase provides authentication and database access. The browser application layer is implemented entirely with modular HTML, CSS, and vanilla JavaScript.
+The application is a premium hotel front-end operations suite for Grand Hasah Hotel. Supabase provides authentication and database access. The browser application layer is implemented entirely with modular HTML, CSS, and vanilla JavaScript.
 
 ### Visual Adaptation Report
 
@@ -286,7 +286,7 @@ The application is a premium hotel front-end operations suite for Grand Millado 
 ### Checkout Receipt Printing
 
 - `checkout-receipt.html?id=RESERVATION_ID` renders a print-ready A4 folio summary.
-- The receipt includes guest stay details, room details, itemized charges, payments, balance outcome, and Grand Millado Hotel branding.
+- The receipt includes guest stay details, room details, itemized charges, payments, balance outcome, and Grand Hasah Hotel branding.
 - The page uses `window.print()` for paper or PDF output.
 
 ### VIP Club Operational Use
@@ -436,7 +436,7 @@ Then open `http://localhost:3000` or `http://localhost:8080` depending on the se
 - Cancelled and completed reservations release room inventory when appropriate.
 - Completed housekeeping tasks can move rooms back to `Available`.
 - Payments roll up into invoice status and reservation payment status.
-- Reservation records receive a unique `GMH-BOOK-YYYY-######` confirmation number.
+- Reservation records receive a unique `GHH-BOOK-YYYY-######` confirmation number.
 - VIP membership fees can be added to invoices.
 - Amenity bookings can apply club discounts or complimentary benefits when configured.
 
@@ -451,6 +451,6 @@ After creating a reservation:
 
 ## Notes
 
-- The app is branded consistently as Grand Millado Hotel.
+- The app is branded consistently as Grand Hasah Hotel.
 - Hotel profile details and tax-rate defaults are stored in browser local storage by the Settings page.
 - Frontend role checks control navigation visibility, while database access is protected with authenticated-user RLS policies.

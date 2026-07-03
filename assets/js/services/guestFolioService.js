@@ -5,7 +5,7 @@ import { saveHousekeepingTask } from "./housekeepingService.js";
 import { getReservation, updateReservationStatus, validateReservationCheckOut } from "./reservationsService.js";
 
 function buildFolioNumber(reservation) {
-  return `GMH-FOL-${new Date(reservation.created_at || Date.now()).getFullYear()}-${String(reservation.id).padStart(6, "0")}`;
+  return `GHH-FOL-${new Date(reservation.created_at || Date.now()).getFullYear()}-${String(reservation.id).padStart(6, "0")}`;
 }
 
 const TRANSACTION_TYPE_CHECKOUT = "Checkout Payment";
@@ -52,7 +52,7 @@ export function renderGuestFolioPage({ settings, reservation, folio, folioNumber
       <article class="print-card guest-folio-card">
         <header class="print-header">
           <div>
-            <p class="eyebrow">Grand Millado Hotel</p>
+            <p class="eyebrow">Grand Hasah Hotel</p>
             <h1>Guest Folio</h1>
             <p class="muted">${escapeHtml(settings.address)}</p>
             <p class="muted">${escapeHtml(settings.contact)}</p>

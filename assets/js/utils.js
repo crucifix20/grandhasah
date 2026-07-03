@@ -1,7 +1,10 @@
 import { DEFAULT_SETTINGS, SETTINGS_STORAGE_KEY } from "./config.js";
 
-const LEGACY_HOTEL_NAME = "The Journey Suite";
-const LEGACY_HOTEL_ADDRESS = "1 The Journey Suite Avenue, Makati Business District";
+const LEGACY_HOTEL_ADDRESSES = [
+  "1 The Journey Suite Avenue, Makati Business District",
+  "1 Grand Hasah Hotel Avenue, Makati Business District",
+];
+const LEGACY_HOTEL_NAMES = ["The Journey Suite", "Journey Suite"];
 
 export const qs = (selector, scope = document) => scope.querySelector(selector);
 export const qsa = (selector, scope = document) => [...scope.querySelectorAll(selector)];
@@ -113,7 +116,7 @@ export function getQueryParam(name) {
 }
 
 export function initials(value) {
-  const parts = String(value || "GMH")
+  const parts = String(value || "GHH")
     .trim()
     .split(/\s+/)
     .slice(0, 2);
@@ -130,11 +133,11 @@ export function getStoredSettings() {
     const parsed = JSON.parse(raw);
     const merged = { ...DEFAULT_SETTINGS, ...parsed };
 
-    if (!parsed.hotelName || parsed.hotelName === LEGACY_HOTEL_NAME) {
+    if (!parsed.hotelName || LEGACY_HOTEL_NAMES.includes(parsed.hotelName)) {
       merged.hotelName = DEFAULT_SETTINGS.hotelName;
     }
 
-    if (!parsed.address || parsed.address === LEGACY_HOTEL_ADDRESS) {
+    if (!parsed.address || LEGACY_HOTEL_ADDRESSES.includes(parsed.address)) {
       merged.address = DEFAULT_SETTINGS.address;
     }
 

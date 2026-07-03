@@ -3,7 +3,7 @@ import { getReservation } from "./reservationsService.js";
 import { renderBookingConfirmation } from "../ui.js";
 
 export function formatConfirmationNumber(reservation) {
-  return reservation.confirmation_number || `GMH-BOOK-${new Date(reservation.created_at || Date.now()).getFullYear()}-${String(reservation.id).padStart(6, "0")}`;
+  return reservation.confirmation_number || `GHH-BOOK-${new Date(reservation.created_at || Date.now()).getFullYear()}-${String(reservation.id).padStart(6, "0")}`;
 }
 
 export async function getBookingConfirmationData(id) {
